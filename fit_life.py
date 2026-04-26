@@ -10,8 +10,7 @@ def request_name():
     Returns:
         str: имя пользователя
     """
-    user_name = input('Как Вас зовут? ')
-    return user_name
+    return input('Как Вас зовут? ')
 
 
 # Запрос возраста пользователя
@@ -84,8 +83,7 @@ def calculation_bmi(user_weight, user_height):
     Returns:
         float: индекс массы тела
     """
-    bmi = round(user_weight / (user_height ** 2), 1)
-    return bmi
+    return round(user_weight / (user_height ** 2), 1)
 
 
 # Расчет рекомендации нормы воды в день
@@ -101,8 +99,7 @@ def calculation_water_needed(user_weight):
     """
     ML_ON_KG = 30
     ML_IN_L = 1000
-    water_l = round(user_weight * ML_ON_KG / ML_IN_L, 1)
-    return water_l
+    return round(user_weight * ML_ON_KG / ML_IN_L, 1)
 
 
 # 4. Вывод красивого результата
