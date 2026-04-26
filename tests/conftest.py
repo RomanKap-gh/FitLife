@@ -39,7 +39,7 @@ def run_program(file_path):
             text=True,
             capture_output=True,
             #encoding="utf-8",
-            encoding="cp1251",
+            encoding="cp866",
             timeout=2,
         )
 
