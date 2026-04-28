@@ -10,7 +10,12 @@ def request_name():
     Returns:
         str: имя пользователя
     """
-    return input('Как Вас зовут? ')
+    while True:
+        user_name = input('Как Вас зовут? ').strip()
+        if user_name == '':
+            print('Ошибка! Вы забыли ввести буквы!\n')
+        else:
+            return user_name
 
 
 # Запрос возраста пользователя
@@ -21,14 +26,20 @@ def request_age():
     Returns:
         int: возраст пользователя
     """
-    is_continue = True
-    while (is_continue):
+    MAX_AGE = 100
+    MIN_AGE = 6
+    while True:
         try:
             user_age = int(input('Сколько Вам лет? '))
-            is_continue = False
         except ValueError:
             print('\nОшибка!!! Введите целое число\n')
-    return user_age
+        else:
+            if user_age > MAX_AGE:
+                print('Упс...перебор!! Введите корректное значение')
+            elif user_age < MIN_AGE:
+                print('Упс...недобор!! Введите корректное значение')
+            else:
+                return user_age
 
 
 # 2. Сбор данных
@@ -40,15 +51,21 @@ def request_weight():
     Returns:
         float: вес пользователя
     """
-    is_continue = True
-    while (is_continue):
+    MAX_WEIGHT = 150
+    MIN_WEIGHT = 30
+    while True:
         try:
             user_weight = float(input(
                 'Введите свой вес в килограммах (например 60.5): '))
-            is_continue = False
         except ValueError:
             print('\nОшибка!!! Неккоректный ввод данных!\n')
-    return user_weight
+        else:
+            if user_weight > MAX_WEIGHT:
+                print('Упс...перебор!! Введите корректное значение')
+            elif user_weight < MIN_WEIGHT:
+                print('Упс...недобор!! Введите корректное значение')
+            else:
+                return user_weight
 
 
 # Запрос роста пользователя
@@ -59,15 +76,21 @@ def request_height():
     Returns:
         float: возраст пользователя
     """
-    is_continue = True
-    while (is_continue):
+    MAX_HEIGHT = 2.2
+    MIN_HEIGHT = 1
+    while True:
         try:
             user_height = float(input(
                 'Введите свой рост в метрах (например 1.75): '))
-            is_continue = False
         except ValueError:
             print('\nОшибка!!! Неккоректный ввод данных!\n')
-    return user_height
+        else:
+            if user_height > MAX_HEIGHT:
+                print('Упс...перебор!! Введите корректное значение')
+            elif user_height < MIN_HEIGHT:
+                print('Упс...недобор!! Введите корректное значение')
+            else:
+                return user_height
 
 
 # 3. Логика расчетов
@@ -124,7 +147,7 @@ def print_result(user_name, user_age, bmi, water_l):
         year = 'лет'
     print(f'\nОтчет для пользователя:   {user_name} ({user_age} {year})')
     print(f'Твой Индекс Массы Тела:   {bmi}')
-    print(f'Рекомендуемая норма воды: {water_l} л. в день\n')
+    print(f'Рекомендуемая норма воды: {water_l} л в день\n')
     print(f'Расчет окончен. {user_name}, будьте здоровы!')
 
 
@@ -132,8 +155,9 @@ print('Добрый день!')
 user_name = request_name()
 user_age = request_age()
 print(f'\nПриятно с Вами познакомиться, {user_name}!')
-print('Я помогу вам рассчитать Индекс Массы Тела, а также дам', end=' ')
-print('рекомендации по норме употребляемой воды в литрах в день.')
+print(
+    'Я помогу вам рассчитать Индекс Массы Тела, а также дам '
+    'рекомендации по норме употребляемой воды в литрах в день.')
 print('Для подсчетов мне понадобятся ряд Ваших параметров.\n')
 user_weight = request_weight()
 user_height = request_height()
